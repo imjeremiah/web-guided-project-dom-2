@@ -85,17 +85,43 @@ links.forEach(link => {
 // It should console.log the target 🎯 of the event.
 // It should also console.log the CURRENT target 🧭 of the event.
 // Play with stopPropagation and stopImmediatePropagation.
-document.querySelectorAll("*").forEach(elem => {
-  elem.addEventListener("click", evt => {
-    console.log(`Target:         ${evt.target}`);
-    console.log(`Current Target: ${evt.currentTarget}`);
-  })
-})
+// document.querySelectorAll("*").forEach(elem => {
+//   elem.addEventListener("click", evt => {
+//     console.log(`Target:         ${evt.target}`);
+//     console.log(`Current Target: ${evt.currentTarget}`);
+//   })
+// })
 
 modal.addEventListener("click", evt => {
   console.log("Get outta here with your propagation!");
   evt.stopPropagation();
 })
+
+document.addEventListener("click", evt => {
+  if (evt.target === launchButton) {
+    console.log("LAUNCHING");
+  } else {
+    modal.classList.add("off");
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
 // more readable in tasks 3, 4, 5, 6
