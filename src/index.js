@@ -61,19 +61,41 @@ cancelButton.addEventListener("click", cancel);
  * function expression =>  const foo = () => {} => Static!
  */
 
-
-
-
 // 👉 TASK 6- Create a function that closes the modal if
 // the user hits the Escape key on their keyboard.
 // Add it as an event listener for 'keydown' events on document.
+function escKey(evt) {
+  if (evt.key === "Escape") {
+    modal.classList.add("off");
+  }
+}
+document.addEventListener("keydown", escKey);
+
+const links = document.querySelectorAll("a");
+links.forEach(link => {
+  link.addEventListener("click", function(event) {
+    event.preventDefault();
+    // console.log(`The ${event.target.textContent} link is broken!`);
+  })
+})
+
 
 
 // 👉 TASK 7- Add to ALL ELEMENTS ON THE PAGE an event listener for click events.
 // It should console.log the target 🎯 of the event.
 // It should also console.log the CURRENT target 🧭 of the event.
 // Play with stopPropagation and stopImmediatePropagation.
+document.querySelectorAll("*").forEach(elem => {
+  elem.addEventListener("click", evt => {
+    console.log(`Target:         ${evt.target}`);
+    console.log(`Current Target: ${evt.currentTarget}`);
+  })
+})
 
+modal.addEventListener("click", evt => {
+  console.log("Get outta here with your propagation!");
+  evt.stopPropagation();
+})
 
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
 // more readable in tasks 3, 4, 5, 6
